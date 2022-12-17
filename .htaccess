@@ -1,0 +1,14 @@
+#Evitar que se pueda ver el contenido de las carpetas
+Options All -Indexes
+Options -MultiViews
+
+#Activando la manera para reescribir reglas
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Cada vez que se ponga una url, primero debe ir al archivo index.php, 
+#y lo siguiente sera parametros en la variable url
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+php_flag output_buffering on
